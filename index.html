@@ -3,40 +3,54 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>CSS Box Model</title>
+  <title>CSS Flag Project</title>
   <style>
-    /* Write your CSS code here */
-    div{
-      height:200px;
-      width:200px;}
-    #frist{
-      border: 10px solid black;
-      padding: 20px;
+    /* Write your CSS Code here */
+    .flag{
+      background-color: red;
+      position: relative;
+      height: 900px;
+      width: 600px;
     }
-    #second{
-      background-color: gold;
-      border:solid black;
-      border-width: 20px 10px;
-      margin-left: 260px;
+    .flag>div{
+      background-color: #002868;
+      position: absolute;
+      height: 300px;
+      width: 100%;
+      top: 150px;
     }
-    #third{
-      background-color: indianred;
-      border: 10px solid black;
-      margin-left: 40px;
+    .flag>div>div{
+      position: absolute;
+      height: 200px;
+      width:200px;
+      
+      background-color: white;
+      border-radius: 50%;
+      top: 50px;
+      left: 350px;
     }
-
-
+    p{
+      font-size: 5rem;
+      text-align: center;
+      padding: 0px;
+      margin: 0px;
+    }
+    .flag>div div p{
+      color: black;
+    }
+    
   </style>
 </head>
 
 <body>
-<div id="frist">
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at sapien porttitor urna elementum lacinia. In
-    id magna pulvinar, ultricies lorem id, vehicula elit. Aliquam eu luctus nisl, vitae pellentesque magna. Phasellus
-    dolor metus, laoreet ac convallis sit amet, efficitur sed dolor.</p>
-</div>
-<div id="second"></div>
-<div id="third"></div>
+  <div class="flag">
+    <p>The Flag</p>
+    <div>
+      <div>
+        <p>of Laos</p>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
