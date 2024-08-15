@@ -1,13 +1,41 @@
+//To see how the final website should work, run "node solution.js".
+//Make sure you have installed all the dependencies with "npm i".
+//The password is ILoveProgramming
 import express from "express";
-const app=express();
+import bodyParser from "body-parser";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const app = express();
+const port = 4000;
+
+var userIsAuthorised = false;
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+function passwordCheck(req,res,next){
+    const password=req.body["password"];
+    if(password==="ILoveProgramming"){
+        userIsAuthorised = true;
+    }
+    next();
+}
+
+app.use(passwordCheck);
+
 
 app.get("/",(req,res)=>{
-    res.send("<h1>Hello This Is PES UNIVERSITY<h1>");
+    res.sendFile(__dirname +"/public/index.html");
 });
 
-app.get("/about",(req,res)=>{
-    res.send("<h1>About me<h1>");
+app.post("/check",(req,res)=>{
+    if (userIsAuthorised) {
+        res.sendFile(__dirname + "/public/secret.html");
+      } else {
+        res.sendFile(__dirname + "/public/index.html");}
 });
-app.listen(4000,()=>{
-    console.log("Server running on port 4000.");
-});
+
+app.listen(port,()=>{
+    console.log(`Listening on port ${port}`);
+})
